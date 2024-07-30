@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 05 mai 2024 à 19:49
+-- Généré le : mar. 30 juil. 2024 à 16:39
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -42,9 +42,7 @@ CREATE TABLE IF NOT EXISTS `amande` (
 
 INSERT INTO `amande` (`id_amande`, `raison`, `montant`, `id_association`) VALUES
 (9, 'retard', 2000, '617203'),
-(10, 'retard', 1200, '359821'),
 (11, 'retard', 1250, '182154'),
-(12, 'retard', 1500, '32613'),
 (13, 'tetu', 15000, '617203');
 
 -- --------------------------------------------------------
@@ -100,12 +98,7 @@ CREATE TABLE IF NOT EXISTS `association` (
 INSERT INTO `association` (`id`, `id_association`, `nom`, `mdp`, `email`, `telephone`, `modification`, `date_creation`, `description_A`, `responsable`, `type_association`, `cotisation`, `statut`, `nbr_membre`, `photo`) VALUES
 (32209, '617203', 'iai', 'iai', 'iai@gmail.com', 1234567, '2023-09-24', '2023-09-06', 'dsqd', 'jean', 'tontine', 0, 'dqsd', 3, '../image/chase_title.jpg'),
 (32222, '185953', 'african', 'azerty', 'african@gmail.com', 1234567, NULL, '2023-09-14', 'dsqd', 'window', 'tontine', 0, 'dqsd', 0, '../image/3.png'),
-(32223, '359821', 'jeunesse bafang', 'azerty', 'clovis@gmail.com', 12345678, NULL, '2023-09-16', 'dsqd', 'clovis', 'tontine', 0, 'dqsd', 1, '../image/12.jpg'),
-(32225, '384278', 'iut', '123', 'iut@gmail.com', 123, NULL, '2023-09-21', 'dsqd', 'jean', 'Syndicat', 0, 'dqsd', 0, '../image/flu.jpg'),
-(32226, '3a9b17', 'skyll', 'azerty', 'ulrich@gmail.com', 0, '2023-09-23', '2023-09-23', 'dsqd', 'ulrich', 'Syndicat', 0, 'dqsd', 1, '../image/history.jpg'),
-(32227, '32613', 'dschang', '8121219+', 'bertinemeka@gmail.com', 668942278, NULL, '2023-09-28', 'dsqd', 'happi', 'Syndicat', 0, 'dqsd', 1, '../image/ibu.jpg'),
-(32228, '16877', 'fille de ari', '123', 'gens@gmail.com', 784523, NULL, '2023-10-06', 'dsqd', 'fongang', 'tontine', 0, 'dqsd', 1, '../image/doliprane.jpg'),
-(32229, '923514', 'fille du nil', 'azerty', 'junny@gmail.com', 741852, NULL, '2023-10-06', 'dsqd', 'junny', 'tontine', 0, 'dqsd', 1, '../image/vid.png');
+(32225, '384278', 'iut', '123', 'iut@gmail.com', 123, NULL, '2023-09-21', 'dsqd', 'jean', 'Syndicat', 0, 'dqsd', 0, '../image/flu.jpg');
 
 -- --------------------------------------------------------
 
@@ -242,10 +235,10 @@ CREATE TABLE IF NOT EXISTS `cotiser` (
 DROP TABLE IF EXISTS `demande_emprunt`;
 CREATE TABLE IF NOT EXISTS `demande_emprunt` (
   `id_de` int NOT NULL AUTO_INCREMENT,
-  `id_association` varchar(6) COLLATE utf8mb4_general_ci NOT NULL,
-  `id_membre` varchar(6) COLLATE utf8mb4_general_ci NOT NULL,
-  `nom` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `prenom` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `id_association` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id_membre` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `nom` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `prenom` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `montant` float NOT NULL,
   `interet` int NOT NULL,
   `date_pret` date NOT NULL,
@@ -330,14 +323,10 @@ CREATE TABLE IF NOT EXISTS `membres` (
 INSERT INTO `membres` (`id`, `id_membre`, `nom`, `photo`, `mdp`, `adresse`, `prenom`, `numero_telephone`, `date_adhesion`, `usertype`, `id_association`, `statut`, `status`) VALUES
 (2, 'AZE123', 'admin', NULL, 'admin123', NULL, NULL, NULL, NULL, 'admin', '', '', ''),
 (3, '564DSQ', 'jeph', NULL, '123456', NULL, NULL, NULL, NULL, 'pro', '', '', ''),
-(383, '757396', 'ange', '../image/imodium.jpg', '75f7313c20144e39edcf57a14733d074aee0c482320d5178ee0ef2f2608c2996', 'gensdd@gmail.com', 'polyne', 7845, '2023-10-06', 'user', '16877', 'normal', ''),
 (382, '36314', 'belinga', '../image/bg_banner2.jpg', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'geni@gmail.com', 'avina', 89465, '2023-09-30', 'user', '617203', 'demande_pret', ''),
-(375, 'f81800', 'dylan', '../image/Capture001.png', 'aze', 'junior@gmail.com', 'junior', 12345678, '2023-09-16', 'user', '359821', 'Normal', ''),
 (376, '4a5443', 'happi', '../image/', 'azerty', 'happi@gmai.com', 'happi', 12345, '2023-09-23', 'user', '182154', 'Normal', ''),
-(377, '7a7a7a', 'karis', '../image/doliprane.jpg', '1234', 'karis@gmail.com', 'jean', 0, '2023-09-28', 'user', '32613', 'Normal', ''),
-(381, '200494', 'avina', '../image/project4.jpg', '1f707cd9f1548819257c8f0b432af46955e4e351a7a61236388eb5bd27cdba7c', 'login@gmail', 'belinga', 784512, '2023-09-30', 'user', '617203', 'Normal', ''),
-(380, '61054', 'jean', '../image/project5.jpg', '5ab8db46c003e5f6b33f62246de3f7b015f93425f02276d0f23f4fdd8a4dc563', 'jean@gmail.com', 'dominique', 785, '2023-09-30', 'user', '617203', 'normal', ''),
-(384, '848005', 'sorelle', '../image/imodium.jpg', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'csq@foijs.com', 'jean', 894562, '2023-10-06', 'user', '923514', 'normal', '');
+(381, '200494', 'avina', '../image/az.jpg', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'login@gmail', 'belinga', 784512, '2023-09-30', 'user', '617203', 'Normal', ''),
+(380, '61054', 'jean', '../image/project5.jpg', '5ab8db46c003e5f6b33f62246de3f7b015f93425f02276d0f23f4fdd8a4dc563', 'jean@gmail.com', 'dominique', 785, '2023-09-30', 'user', '617203', 'normal', '');
 
 -- --------------------------------------------------------
 
@@ -422,8 +411,6 @@ INSERT INTO `notifications` (`idn`, `messagen`, `date_no`, `etat`, `id_membre`, 
 (30, 'Vous venez d\'être amendé', '2023-09-14', 0, '222600', 617203),
 (31, 'Vous  amande retiré', '2023-09-14', 0, '222600', 617203),
 (32, 'Vous  amande retiré', '2023-09-14', 0, '222600', 617203),
-(33, 'Vous venez d\'être amendé', '2023-09-16', 0, 'f81800', 359821),
-(34, 'Vous  amande retiré', '2023-09-16', 0, 'f81800', 359821),
 (35, 'Vous venez d\'être amendé', '2023-09-23', 0, '4a5443', 182154),
 (36, 'Vous  amande retiré', '2023-09-23', 0, '4a5443', 182154),
 (37, 'Vous venez d\'être amendé', '2023-09-24', 0, '222600', 617203),
@@ -496,10 +483,6 @@ INSERT INTO `notifications` (`idn`, `messagen`, `date_no`, `etat`, `id_membre`, 
 (104, 'Vous venez d\'être amendé', '2023-09-27', 0, '222600', 617203),
 (105, 'Vous  amande retiré', '2023-09-27', 0, '222600', 617203),
 (106, 'Vous  amande retiré', '2023-09-27', 0, '222600', 617203),
-(107, 'Vous venez d\'être amendé', '2023-09-28', 0, '7a7a7a', 32613),
-(108, 'Vous  amande retiré', '2023-09-28', 0, '7a7a7a', 32613),
-(109, 'Vous  amande retiré', '2023-09-28', 0, '7a7a7a', 32613),
-(110, 'Vous  amande retiré', '2023-09-28', 0, '7a7a7a', 32613),
 (111, 'Vous venez d\'être amendé', '2023-09-30', 0, 'e71b66', 617203),
 (112, 'Vous  amande retiré', '2023-09-30', 0, 'e71b66', 617203),
 (113, 'Vous  amande retiré', '2023-09-30', 0, 'e71b66', 617203),
@@ -536,8 +519,8 @@ CREATE TABLE IF NOT EXISTS `pret` (
   `montant` float NOT NULL,
   `interet` int NOT NULL,
   `max` int NOT NULL,
-  `id_association` varchar(6) COLLATE utf8mb4_general_ci NOT NULL,
-  `statut` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `id_association` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `statut` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_pre`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
